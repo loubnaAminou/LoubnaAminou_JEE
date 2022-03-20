@@ -1,8 +1,11 @@
 package dev.metier;
 
+import framework.IoCAnnotation;
+
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Calendar;
 @XmlRootElement
+@IoCAnnotation("metier")
 public class MetierImpl implements IMetier{
     private int myAge;
 
