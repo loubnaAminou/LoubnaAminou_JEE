@@ -1,4 +1,4 @@
-# JPA Relationships mapping
+# JPA Relationship mapping
 
 The classes in OOP, to entities in JPA are treated as relational tables in a DBMS. That's why, the relationships between entities should be translated as attributes in tables. 
 There are four types of association mappings :
@@ -12,14 +12,14 @@ There are four types of association mappings :
 
 <h2> One To One mapping </h2>
 
-![One_To_One]
+![One_To_One](https://github.com/loubnaAminou/LoubnaAminou_JEE/blob/main/JPA_Hibernate_SpringData/OneToMany/screenshots/OneToOne.png)
 
 <h2> One To Many mapping </h2>
 
-![One_To_Many]
+![One_To_Many](https://github.com/loubnaAminou/LoubnaAminou_JEE/blob/main/JPA_Hibernate_SpringData/OneToMany/screenshots/OneToMany.png)
 
 <h2> Many To One mapping </h2>
 
-![Many_To_One]
+![Many_To_One](https://github.com/loubnaAminou/LoubnaAminou_JEE/blob/main/JPA_Hibernate_SpringData/OneToMany/screenshots/ManyToOne.png)
 
 
