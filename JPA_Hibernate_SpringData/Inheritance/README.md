@@ -1,4 +1,4 @@
-#Inheritance in JPA
+<h1>Inheritance in JPA</h1>
 To translate the inheritance from the oriented object concept to relations in database, Spring provides three strategies :
 <ol> 
 <li>SINGLE_TABLE</li>
