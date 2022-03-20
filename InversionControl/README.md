@@ -14,6 +14,7 @@ If there is a dependence between two classes (unidirectional association), we sa
 
 That's why loose coupling comes to put in evidence the independence between classes, through a common interface.
 <h6> Loose coupling </h6>
+
 ![Loose_Coupling](https://github.com/loubnaAminou/LoubnaAminou_JEE/blob/main/InversionControl/screenshots/loose_coupling.png)
 
 In this case, we used the dynamic instantiation instead of the static one. This type of instantiation allows the inversion of control easily, because it reads the implementation classes
