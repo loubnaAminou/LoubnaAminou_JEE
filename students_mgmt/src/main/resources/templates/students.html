@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Students Management</title>
+</head>
+<body>
+<div class="container" layout:fragment="content">
+    <h4>All students</h4>
+
+    <form class="row" method="get" th:action="@{/students}">
+        <div class="col-auto">
+            <input type="text" class="form-control" id="keyword" name="keyword" th:value="${keyword}" placeholder="Name Keyword">
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-outline-dark mb-3">Search</button>
+        </div>
+    </form>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Last name</th>
+            <th scope="col">First name</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Email</th>
+            <th scope="col">Birth date</th>
+            <th scope="col">In Rule</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student:${students}">
+            <th scope="row" th:text="${student.lastname}"></th>
+            <td th:text="${student.firstname}"></td>
+            <td th:text="${student.gender}"></td>
+            <td th:text="${student.email}"></td>
+            <td th:text="${student.birthdate}"></td>
+            <td th:text="${student.in_rule}"></td>
+            <td>
+                <a class="btn btn-outline-danger" th:href="@{/delete_student/{id}(id = ${student.id})}">DELETE</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <ul class="d-flex justify-content-center nav nav-pills">
+        <li th:each="page, status:${total}">
+            <a th:class="${status.index==current? 'btn btn-dark ml-1' : 'btn btn-outline-dark ml-1'}"
+               th:text="${status.index}"
+               th:href="@{students(page=${status.index}, keyword=${keyword})}"></a>
+        </li>
+    </ul>
+
+</div>
+
+</body>
+</html>
