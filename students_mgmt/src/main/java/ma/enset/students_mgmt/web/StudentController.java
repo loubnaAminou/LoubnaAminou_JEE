@@ -7,17 +7,21 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 @AllArgsConstructor
 public class StudentController {
     private StudentRepo studentRepo;
+
+    @GetMapping("/")
+    public String index(){
+        return "home";
+    }
 
     @GetMapping("/home")
     public String home(){
@@ -40,10 +44,37 @@ public class StudentController {
         return "students";
     }
 
-    @DeleteMapping("/delete_student/{id}")
-    public String delete(@PathVariable("id") String id){
-        System.out.println(id);
+    @GetMapping("/new_student")
+    public String newStudent(Model model){
+        model.addAttribute("student", new Student());
+        return "form_student";
+    }
+
+    @PostMapping("save_student")
+    public String save(Model model, @Valid Student student,
+                       @RequestParam(defaultValue = "0") int page,
+                       @RequestParam(defaultValue = "") String keyword){
+        student.setId(UUID.randomUUID().toString());
+        studentRepo.save(student);
+        System.out.println(student);
+        return "redirect:/students?page="+page+"&keyword="+keyword;
+    }
+
+    @GetMapping("/edit_student")
+    public String edit(Model model, String id,
+                       @RequestParam(defaultValue = "0") int page,
+                       @RequestParam(defaultValue = "") String keyword) {
+        Student student = studentRepo.findById(id).orElse(null);
+        model.addAttribute("student", student);
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("page", page);
+        return "form_student";
+    }
+
+    @GetMapping("/delete_student/{id}")
+    public String delete(@PathVariable String id){
+        System.out.println(studentRepo.findById(id));
         studentRepo.deleteById(id);
-        return "redirect:students";
+        return "redirect:/students";
     }
 }

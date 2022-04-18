@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template">
+<head>
+    <meta charset="UTF-8">
+    <title>Student form</title>
+</head>
+<body>
+<div class="container" layout:fragment="content">
+    <h1>Student form</h1>
+    <form method="post" th:action="@{save_student}">
+        <div class="mb-3">
+            <label for="lastname" class="form-label">Last Name</label>
+            <input type="text" class="form-control" name="lastname" th:value="${student.lastname}" id="lastname">
+            <label for="firstname" class="form-label">First Name</label>
+            <input type="text" class="form-control" name="firstname" th:value="${student.firstname}" id="firstname">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" class="form-control" name="email" th:value="${student.email}" id="email">
+        </div>
+        <div class="mb-3">
+            <label for="birthdate" class="form-label">Birth Date</label>
+            <input type="date" class="form-control" name="birthdate" th:value="${student.birthdate}" id="birthdate">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Gender</label>
+            <input type="radio" th:field="*{student.gender}" name="MALE" th:value="MALE">Male
+            <input type="radio" th:field="*{student.gender}" name="FEMALE" th:value="FEMALE">Female
+        </div>
+        <div class="mb-3 form-check custom-control custom-radio custom-control-inline">
+            <input type="checkbox" name="in_rule" th:checked="${student.in_rule}" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">In Rule</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+</body>
+</html>

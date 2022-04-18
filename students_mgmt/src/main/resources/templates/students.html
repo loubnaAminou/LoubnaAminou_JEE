@@ -11,15 +11,16 @@
 <body>
 <div class="container" layout:fragment="content">
     <h4>All students</h4>
-
-    <form class="row" method="get" th:action="@{/students}">
-        <div class="col-auto">
-            <input type="text" class="form-control" id="keyword" name="keyword" th:value="${keyword}" placeholder="Name Keyword">
-        </div>
-        <div class="col-auto">
-            <button type="submit" class="btn btn-outline-dark mb-3">Search</button>
-        </div>
-    </form>
+    <div class="container mt-4">
+        <form class="row border-dark" method="get" th:action="@{/students}">
+            <div class="col-auto">
+                <input type="text" class="form-control" id="keyword" name="keyword" th:value="${keyword}" placeholder="Name Keyword">
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-outline-dark mb-3">Search</button>
+            </div>
+        </form>
+    </div>
 
     <table class="table">
         <thead>
@@ -42,6 +43,7 @@
             <td th:text="${student.birthdate}"></td>
             <td th:text="${student.in_rule}"></td>
             <td>
+                <a class="btn btn-outline-info" th:href="@{/edit_student(id=${student.id}, page=${current}, keyword=${keyword})}">EDIT</a>
                 <a class="btn btn-outline-danger" th:href="@{/delete_student/{id}(id = ${student.id})}">DELETE</a>
             </td>
         </tr>
