@@ -28,23 +28,24 @@
                         Students
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="students_dropdown">
-                        <li><a class="dropdown-item" th:href="@{/new_student}">Add new student</a></li>
+                        <li><a class="dropdown-item" sec:authorize="hasAuthority('ADMIN')" th:href="@{/new_student}">Add new student</a></li>
                         <li><a class="dropdown-item" th:href="@{/students}">Search</a></li>
                     </ul>
                 </li>
             </ul>
         </div>
-        <ul class="navbar-nav">
-            <li sec:authorize="isAuthenticated()" class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="user_dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <span sec:authentication="name"></span>
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="user_dropdown">
-                    <li><a class="dropdown-item" href="#">My Profile</a></li>
-                    <li><a class="dropdown-item" th:href="@{/logout}">Logout</a></li>
-                </ul>
-            </li>
-        </ul>
+            <ul class="navbar-nav">
+                <li sec:authorize="isAuthenticated()" class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="user_dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span sec:authentication="name"></span>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="user_dropdown">
+                        <li><a class="dropdown-item" href="#">My Profile</a></li>
+                        <li><a class="dropdown-item" th:href="@{/logout}">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+
     </div>
 </nav>
 

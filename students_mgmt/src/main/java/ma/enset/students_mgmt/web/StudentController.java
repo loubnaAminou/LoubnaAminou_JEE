@@ -51,12 +51,15 @@ public class StudentController {
     }
 
     @PostMapping("save_student")
-    public String save(Model model, @Valid Student student,
+    public String save(Model model, @Valid Student student, String id,
                        @RequestParam(defaultValue = "0") int page,
                        @RequestParam(defaultValue = "") String keyword){
-        student.setId(UUID.randomUUID().toString());
+        System.out.println("############" +id.isEmpty());
+        if (id.isEmpty()){
+            System.out.println("***************NULL ID**********************");
+            student.setId(UUID.randomUUID().toString());
+        }else student.setId(id);
         studentRepo.save(student);
-        System.out.println(student);
         return "redirect:/students?page="+page+"&keyword="+keyword;
     }
 

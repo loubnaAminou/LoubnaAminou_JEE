@@ -10,7 +10,7 @@
 <body>
 <div class="container" layout:fragment="content">
     <h1>Student form</h1>
-    <form method="post" th:action="@{save_student}">
+    <form method="post" th:action="@{save_student(id = ${student.id})}">
         <div class="mb-3">
             <label for="lastname" class="form-label">Last Name</label>
             <input type="text" class="form-control" name="lastname" th:value="${student.lastname}" id="lastname">

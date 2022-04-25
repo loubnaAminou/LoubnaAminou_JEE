@@ -2,6 +2,7 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       layout:decorate="template"
 >
 <head>
@@ -14,7 +15,7 @@
     <div class="container mt-4">
         <form class="row border-dark" method="get" th:action="@{/students}">
             <div class="col-auto">
-                <input type="text" class="form-control" id="keyword" name="keyword" th:value="${keyword}" placeholder="Name Keyword">
+                <input type="text" autofocus class="form-control" id="keyword" name="keyword" th:value="${keyword}" placeholder="Name Keyword">
             </div>
             <div class="col-auto">
                 <button type="submit" class="btn btn-outline-dark mb-3">Search</button>
@@ -43,8 +44,8 @@
             <td th:text="${student.birthdate}"></td>
             <td th:text="${student.in_rule}"></td>
             <td>
-                <a class="btn btn-outline-info" th:href="@{/edit_student(id=${student.id}, page=${current}, keyword=${keyword})}">EDIT</a>
-                <a class="btn btn-outline-danger" th:href="@{/delete_student/{id}(id = ${student.id})}">DELETE</a>
+                <a class="btn btn-outline-info" sec:authorize="hasAuthority('ADMIN')"  th:href="@{/edit_student(id=${student.id}, page=${current}, keyword=${keyword})}">EDIT</a>
+                <a class="btn btn-outline-danger" sec:authorize="hasAuthority('ADMIN')"  th:href="@{/delete_student/{id}(id = ${student.id})}">DELETE</a>
             </td>
         </tr>
         </tbody>
