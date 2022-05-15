@@ -4,4 +4,4 @@ Web application based on the main basics of Spring Back End, and Angular as Fron
 
 ### Database schema 
 
-![](C:\Users\amino\OneDrive\Bureau\S4\JEE\LoubnaAminou_JEE\Digital Banking\Back end\screenshots\database_schema.png)
+![](screenshots\database_schema.png)
