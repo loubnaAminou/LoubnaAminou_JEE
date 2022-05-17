@@ -1,0 +1,35 @@
+<div class="container mt-2">
+    <div class="card col-md-6 offset-3 mt-3">
+      <div class="card-header">New Customer</div>
+      <div class="card-body">
+        <form [formGroup]="newCustomerForm" (ngSubmit)="handleNewCustomer()">
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" formControlName="name">
+            <span class="text-danger" *ngIf="newCustomerForm.controls['name'].touched
+                        && newCustomerForm.controls['name'].errors
+                         && newCustomerForm.controls['name'].errors!['required']">
+              Name is REQUIRED. Min length is 4 characters
+            </span>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" formControlName="email" id="email"/>
+            <span class="text-danger" *ngIf="newCustomerForm.controls['email'].touched
+                        && newCustomerForm.controls['email'].errors
+                         && newCustomerForm.controls['email'].errors!['required']">
+              Email is REQUIRED
+            </span>
+          </div>
+          <div class="mb-3">
+            <input type="submit" [disabled]="!newCustomerForm.valid" class="btn btn-outline-dark" />
+            <i class="bi bi-check"></i>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+</div>
+
+
