@@ -2,9 +2,8 @@
 
 Those are all the examples that we made during this semester :
 <ul>
-  <li>First example to understand the Inversion of Control (Ioc) and Dependency Injection (DI) 
-    <a href="https://github.com/loubnaAminou/LoubnaAminou_JEE/tree/main/InversionControl"></a>
-  </li>
+  <li>First example to understand the Inversion of Control (Ioc) and Dependency Injection (DI)
+  </li><a href="https://github.com/loubnaAminou/LoubnaAminou_JEE/tree/main/InversionControl"></a>
   <li>Trying to understand the architecture of framework and apply my own version to implement the DI using XML
     <a href="https://github.com/loubnaAminou/LoubnaAminou_JEE/tree/main/IoC_Framework"></a>
   </li>
