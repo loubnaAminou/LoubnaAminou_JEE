@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Customer} from "../model/customer";
+import {CustomerModel} from "../model/customer.model";
 import {CustomerService} from "../services/customer.service";
 import {Router} from "@angular/router";
 
@@ -22,7 +22,7 @@ export class NewCustomerComponent implements OnInit {
   }
 
   handleNewCustomer() {
-    let customer : Customer = this.newCustomerForm.value
+    let customer : CustomerModel = this.newCustomerForm.value
       this.customerService.newCustomer(customer).subscribe({
         next : value => this.router.navigateByUrl("/customers"),
         error : err => console.log(err)

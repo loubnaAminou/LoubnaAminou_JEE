@@ -4,13 +4,12 @@ import ma.enset.backend.dtos.AccountOperationDTO;
 import ma.enset.backend.dtos.CurrentAccountDTO;
 import ma.enset.backend.dtos.CustomerDTO;
 import ma.enset.backend.dtos.SavingAccountDTO;
-import ma.enset.backend.entities.AccountOperation;
-import ma.enset.backend.entities.CurrentAccount;
-import ma.enset.backend.entities.Customer;
-import ma.enset.backend.entities.SavingAccount;
+import ma.enset.backend.entities.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
+
+import java.util.stream.Collectors;
 
 @Service
 public class BankAccountMapperImpl {
@@ -20,7 +19,7 @@ public class BankAccountMapperImpl {
         customerDTO.setId(customer.getId());
         customerDTO.setName(customer.getName());
         customerDTO.setEmail(customer.getEmail());
-
+        customerDTO.setAccountIds(customer.getBankAccounts().stream().map(BankAccount::getId).collect(Collectors.toList()));
         return customerDTO;
     }
 

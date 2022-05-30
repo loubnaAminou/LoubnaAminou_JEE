@@ -25,8 +25,11 @@
             <th scope="row">{{customer.id}}</th>
             <td>{{customer.name}}</td>
             <td>{{customer.email}}</td>
-            <td><button class="btn btn-outline-danger" (click)="handleDeletecustomer(customer)"><i class="bi bi-trash"></i></button></td>
-            <td><button class="btn btn-outline-info" (click)="handleEditCustomer(customer)"><i class="bi bi-pencil"></i></button></td>
+            <div *ngIf="isAdmin()">
+              <td><button class="btn btn-outline-info" (click)="handleEditCustomer(customer)"><i class="bi bi-pencil"></i></button></td>
+              <td><button class="btn btn-outline-danger" (click)="handleDeletecustomer(customer)"><i class="bi bi-trash"></i></button></td>
+            </div>
+            <td><button class="btn btn-outline-success" (click)="handleAccounts(customer)">Accounts</button></td>
           </tr>
           </tbody>
         </table>

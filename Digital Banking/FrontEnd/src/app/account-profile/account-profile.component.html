@@ -1,0 +1,20 @@
+
+<div class="container">
+  <div class="card m-3" style="max-width: 540px;">
+    <div class="row m-3 g-0">
+      <div class="col-md-4">
+        <img src="assets/img.png" class="img-fluid rounded-circle" style="width: 100px;" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{customer.name}}</h5>
+          <p class="card-text">{{customer.email}}</p>
+          <p class="card-text"><small class="text-muted">Check accounts</small></p>
+          <ul *ngFor="let accountId of customer.accountIds">
+            <li><a class="link-success" (click)="handleAccounts(accountId)">{{accountId}}</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

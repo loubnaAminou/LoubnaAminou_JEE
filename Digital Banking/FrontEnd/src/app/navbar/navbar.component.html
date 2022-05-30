@@ -16,7 +16,7 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" routerLink="/customers">Search</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" routerLink="/new-customer">New One</a></li>
+            <div *ngIf="isAdmin()"><li><a class="dropdown-item" routerLink="/new-customer">New One</a></li></div>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -31,10 +31,14 @@
           </ul>
         </li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      <ul class="nav navbar-nav pull-right">
+        <li>
+          <button class="btn-outline-dark" (click)="onLogout()">
+            <span class="bi bi-box-arrow-right"></span>
+          </button>
+        </li>
+
+      </ul>
     </div>
   </div>
 </nav>

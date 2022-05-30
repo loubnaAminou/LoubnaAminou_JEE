@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {CustomerService} from "../services/customer.service";
 import {catchError, Observable, throwError} from "rxjs";
-import {Customer} from "../model/customer";
+import {CustomerModel} from "../model/customer.model";
 import {FormBuilder, FormGroup} from "@angular/forms";
+import {Route, Router} from "@angular/router";
+import {AuthenticationService} from "../services/authentication.service";
 
 @Component({
   selector: 'app-customers',
@@ -12,10 +14,13 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 })
 export class CustomersComponent implements OnInit {
 
-  customers$! : Observable<Array<Customer>>;
+  customers$! : Observable<Array<CustomerModel>>;
   errorMessage : string | undefined;
   searchFormGroup : FormGroup | undefined;
-  constructor(private service : CustomerService, private form : FormBuilder) {}
+  constructor(private service : CustomerService,
+              private form : FormBuilder,
+              private router: Router,
+              public authservice : AuthenticationService) {}
 
   ngOnInit(): void {
     this.searchFormGroup = this.form.group({
@@ -43,7 +48,7 @@ export class CustomersComponent implements OnInit {
     );
   }
 
-  handleDeletecustomer(customer : Customer) {
+  handleDeletecustomer(customer : CustomerModel) {
     let confirm_msg = "Are you sure you want to DELETE "+customer.name+ " ?"
     confirm(confirm_msg)
     this.service.deleteCustomer(customer.id).subscribe({
@@ -52,7 +57,15 @@ export class CustomersComponent implements OnInit {
     });
   }
 
-  handleEditCustomer(customer : Customer) {
+  handleEditCustomer(customer : CustomerModel) {
 
+  }
+
+  handleAccounts(customer: CustomerModel) {
+    this.router.navigateByUrl("/account-profile", {state : customer});
+  }
+
+  isAdmin() {
+    return this.authservice.isAdmin();
   }
 }

@@ -141,7 +141,7 @@ public class BankAccountServiceImpl implements BankAccountService {
             throw new BalanceNotSufficientException("Balance Not Sufficient !!!");
 
         AccountOperation operation = new AccountOperation();
-        operation.setType(TypeOperation.DEBIT);
+        operation.setType(TypeOperation.CREDIT);
         operation.setOperationDate(new Date());
         operation.setAmount(amount);
         operation.setDescription(description);
@@ -189,7 +189,7 @@ public class BankAccountServiceImpl implements BankAccountService {
     public AccountHistoryDTO getAccountHistory(String accountId, int page, int size) throws AccountNotFoundException {
         BankAccount bankAccount = bankAccountRepository.findById(accountId).orElse(null);
         if (bankAccount == null) throw new AccountNotFoundException("not found");
-        Page<AccountOperation> accountOperations = accountOperationRepository.findByBankAccountId(accountId, PageRequest.of(page, size));
+        Page<AccountOperation> accountOperations = accountOperationRepository.findByBankAccountIdOrderByOperationDateDesc(accountId, PageRequest.of(page, size));
         AccountHistoryDTO historyDTO = new AccountHistoryDTO();
         List<AccountOperationDTO> accountOperationsDTO = accountOperations.getContent().stream().map(operation -> mapper.fromAccountOperation(operation)).collect(Collectors.toList());
         historyDTO.setAccountId(bankAccount.getId());
@@ -199,5 +199,11 @@ public class BankAccountServiceImpl implements BankAccountService {
         historyDTO.setTotalPages(accountOperations.getTotalPages());
         historyDTO.setAccountOperationDTOS(accountOperationsDTO);
         return historyDTO;
+    }
+
+    @Override
+    public List<CustomerDTO> searchCustomers(String keyword) {
+        List<Customer> search = customerRepository.searchCustomers(keyword);
+        return search.stream().map(customer -> mapper.fromCustomer(customer)).collect(Collectors.toList());
     }
 }

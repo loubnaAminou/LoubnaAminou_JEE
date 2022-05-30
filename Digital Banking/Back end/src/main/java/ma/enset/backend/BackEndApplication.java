@@ -75,6 +75,10 @@ public class BackEndApplication {
 
         };
         }
+    //@Bean
+    /*PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
+    }*/
 
     @Bean
     CommandLineRunner commandLineRunner(BankAccountService service){
@@ -83,6 +87,7 @@ public class BackEndApplication {
                 CustomerDTO customer = new CustomerDTO();
                 customer.setName(name);
                 customer.setEmail("name"+"@gmail.com");
+
                 service.saveCostumer(customer);
             });
 
@@ -105,8 +110,8 @@ public class BackEndApplication {
                 }else{
                     accountId = ((CurrentAccountDTO) account).getId();
                 }
-                service.credit(accountId, 100 + Math.random() * 100, "Credit");
-                service.debit(accountId, 10 + Math.random() * 90, "Debit");
+                service.credit(accountId, 1, "Credit");
+                service.debit(accountId, 1, "Debit");
 
             }
             };
