@@ -12,8 +12,12 @@ To read the data from the repository :
 In this cas, I used The Bloc State Management to get familiarised with :
 - Customer Bloc :
 
+![](https://github.com/loubnaAminou/LoubnaAminou_JEE/blob/main/Digital%20Banking/digital_banking/screenshots/bloc.png)
+
 - Customer State :
+
+![](https://github.com/loubnaAminou/LoubnaAminou_JEE/blob/main/Digital%20Banking/digital_banking/screenshots/state.png)
 
 - Customer Event :
 
-
+![](https://github.com/loubnaAminou/LoubnaAminou_JEE/blob/main/Digital%20Banking/digital_banking/screenshots/event.png)
