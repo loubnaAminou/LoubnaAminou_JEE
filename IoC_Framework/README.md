@@ -22,7 +22,8 @@ We create the custom annotations, we use @Target to specify the use of the annot
 
 ![annotation](https://github.com/loubnaAminou/LoubnaAminou_JEE/blob/main/IoC_Framework/screenshots/annotation.png)
 
-###Step 3 : The XML application context
+### Step 3 : The XML application context
+
 The third step is to prepare the context of the XML configuration file using JAXB package, to be able to read from an XML file, create the context and instantiate the Java class
 
 ![context](https://github.com/loubnaAminou/LoubnaAminou_JEE/blob/main/IoC_Framework/screenshots/context.png)
